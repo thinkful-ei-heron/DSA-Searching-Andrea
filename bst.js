@@ -17,14 +17,12 @@ class BinarySearchTree {
 			this.value = value;
 			this.root = this;
 		} else if (key < this.key) {
-			// go left
 			if (this.left === null) {
 				this.left = new BinarySearchTree(key, value, this);
 			} else {
 				this.left.insert(key, value);
 			}
 		} else {
-			//go right
 			if (this.right === null) {
 				this.right = new BinarySearchTree(key, value, this);
 			} else {
