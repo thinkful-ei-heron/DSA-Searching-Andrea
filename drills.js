@@ -1,5 +1,6 @@
 /* eslint-disable indent */
 'use strict';
+const BinarySearchTree = require('./bst');
 
 /*
 #1.1
@@ -54,3 +55,15 @@ post-order: 14 19 15 27 25 79 90 91 89 35
 post-order: 5 7 6 9 11 10 8
 pre-order:  8 6 5 7 10 9 11
 */
+
+//5 Diff tree traversals
+//add in, post, pre to bst.js
+function main() {
+	const newTree = new BinarySearchTree();
+	const dataset = [ 25, 15, 50, 10, 24, 35, 70, 4, 12, 18, 31, 44, 66, 90, 22 ];
+	dataset.forEach((val) => newTree.insert(val));
+	console.log(newTree.inOrder()); //[4, 10, 12, 15, 18, 22,24, 25, 31, 35, 44, 50,66, 70, 90]
+	console.log(newTree.preOrder()); //[25, 15, 10,  4, 12, 24,18, 22, 50, 35, 31, 44, 70, 66, 90]
+	console.log(newTree.postOrder()); //[4, 12, 10, 22, 18, 24,15, 31, 44, 35, 66, 90,70, 50, 25]
+}
+main();

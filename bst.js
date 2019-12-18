@@ -100,7 +100,7 @@ class BinarySearchTree {
 			}
 		}
 	}
-	//added from slides
+	//part of #5
 	inOrder(values = []) {
 		if (this.left) values = this.left.inOrder(values);
 		values.push(this.key);
