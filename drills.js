@@ -27,12 +27,12 @@ return null
 
 //#3 Find a book
 //look for a book
-// need library, Dewey decimal(dd), title, start, and end of array
+// need library, Dewey decimal(dd) start, and end of array
 //using binary search tree
-function findABook(library, dd, title, start = 0, end = library.length) {
+function findABook(library, dd, start = 0, end = library.length) {
 	while (start < end) {
 		let index = Math.floor((start + end) / 2);
-		//this will check midpoint to see if it has the correct dd and title
+		//this will check midpoint to see if it has the correct dd
 		if (library[index].dd === dd) {
 			return library[index];
 		}
@@ -67,7 +67,7 @@ function main() {
 	// console.log(newTree.preOrder()); //[25, 15, 10,  4, 12, 24,18, 22, 50, 35, 31, 44, 70, 66, 90]
 	// console.log(newTree.postOrder()); //[4, 12, 10, 22, 18, 24,15, 31, 44, 35, 66, 90,70, 50, 25]
 }
-// main();
+main();
 
 //#6 Find next Commanding Officer
 //create tree with ranking of cammanding officers
@@ -98,8 +98,27 @@ function nextInCommand(CT) {
 	// will dequeue and show the next in command
 	if (CQ.first) {
 		nextInCommand(CQ.dequeue());
-		// console.log(`${CQ.dequeue()} will be the next in command`);
 	}
 }
-// nextInCommand(CT);
+nextInCommand(CT);
 // console.log(CT);
+
+//#7 Max Profit
+// share price over a week period [128, 97, 121, 123, 98, 97, 105]
+//find biggest difference between share prices
+//this will = most profit you can make from buying and selling a share
+let shares = [ 128, 97, 121, 123, 98, 97, 105 ];
+function maxProfit(arr) {
+	//finding max difference between two values for all combinations in arr
+	let maxAmt = 0;
+	let dayNum = 1;
+	for (let i = 1; i < arr.length; i++) {
+		let diff = arr[i] - arr[i - 1];
+		if (diff > maxAmt) {
+			maxAmt = diff;
+			dayNum = i + 1;
+		}
+	}
+	console.log(`If you buy on day ${dayNum - 1} and sell on day ${dayNum}, you will make a max profit of ${maxAmt}`);
+}
+maxProfit(shares);
