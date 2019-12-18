@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 'use strict';
 
 /*
@@ -22,3 +23,34 @@ Find 16
 return null
 */
 
+//#3 Find a book
+//look for a book
+// need library, Dewey decimal(dd), title, start, and end of array
+//using binary search tree
+function findABook(library, dd, title, start = 0, end = library.length) {
+	while (start < end) {
+		let index = Math.floor((start + end) / 2);
+		//this will check midpoint to see if it has the correct dd and title
+		if (library[index].dd === dd) {
+			return library[index];
+		}
+		if (library[index].dd > dd) {
+			findABook(library, dd, index - 1);
+		}
+		if (library[index].dd < dd) {
+			findABook(library, dd, index + 1, end);
+		}
+	}
+	return 'Sorry your book was not found';
+}
+
+/*
+#4.1 Searching in a BST
+in-order: 14 15 19 25 27 35 79 89 90 91
+pre-order: 35 25 15 14 19 27 89 79 91 90
+post-order: 14 19 15 27 25 79 90 91 89 35
+
+#4.2
+post-order: 5 7 6 9 11 10 8
+pre-order:  8 6 5 7 10 9 11
+*/
